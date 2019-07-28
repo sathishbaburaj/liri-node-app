@@ -1,4 +1,6 @@
+// Grab the axios package...
 var axios = require("axios");
+// Core node package for reading and writing files
 var fs = require("fs");
 require("dotenv").config();
 var keys = require("./keys");
