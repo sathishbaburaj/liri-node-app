@@ -35,7 +35,7 @@ All the data input by user is logged into the logs.txt file using fs.appendFile 
 
 1. node liri.js movie-this <movie name>
 
-*  This command searches the movie database in OMDB API through Axios and returns information about the movie.
+ *This command searches the movie database in OMDB API through Axios and returns information about the movie.
    It includes 
 
 * Title of the movie
@@ -48,3 +48,43 @@ All the data input by user is logged into the logs.txt file using fs.appendFile 
 
 ![](images/Movie-this1.PNG)
 ![](images/Movie-this2.PNG)
+
+2. node liri.js spotify-this-song <song-name>
+
+ This command searches the Spotify Web Api which runs on Node.js and returns the song information.
+ The output from this command includes
+ 
+ *Artists(s) Name
+ *Song's Name
+ *Preview link of the song
+ *Album
+ 
+ ![](images/Spotify-this1.PNG)
+ 
+ *If the user doesn't provide any song name then the application returns the default information which is set to "The Sign" by "Ace of Base".
+ 
+  ![](images/Spotify-this2.PNG)
+  
+3.node liri.js concert-this <artist/band-name>
+
+*This command searches the Bands in Town Artist Events API through Axios and returns events the artist is appearing at in the near future.
+ It includes Venue Name: , Venue Location: , and Date of the Event: . If no artist is entered, the API automatically searches "Backstreet Boys" band information for the user.
+
+![](images/Concert-this1.PNG)
+![](images/Concert-this2.PNG}
+
+4. node liri.js do-what-it-says
+
+*Using the fs Node package, LIRI accesses the text in random.txt and uses it to call one of LIRI's commands for the user.
+ It runs spotify-this-song for "I Want it That Way" by the Backstreet Boys, but can also be modified to search for a specific movie for movie-this,
+ or a specific artist for concert-this etc.
+ 
+ ![](images/do-what-it-says1.PNG)
+ 
+5. node liri.js
+ 
+*If no other user input is provided by the user, the terminal returns the message Please enter a valid search term, 
+ such as {concert-this}, {spotify-this-song}, {movie-this}, or {do-what-it-says}".
+ 
+ ![](images/default.PNG)
+ 

@@ -37,6 +37,9 @@ switch (userInput) {
     doWhatItSays();
     break;
   }
+  default:
+      console.log("Please enter a valid search term, e.g movie-this,concert-this,spotify-this-song or do-what-it-says");
+      break;
 }
 function movieThis() {
   if (!userQuery) {
