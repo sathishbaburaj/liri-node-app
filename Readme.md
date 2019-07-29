@@ -47,6 +47,7 @@ All the data input by user is logged into the logs.txt file using fs.appendFile 
 * Actors in the movie
 
 ![](images/Movie-this1.PNG)
+
 ![](images/Movie-this2.PNG)
 
 2. node liri.js spotify-this-song <song-name>
@@ -71,6 +72,7 @@ All the data input by user is logged into the logs.txt file using fs.appendFile 
  It includes Venue Name: , Venue Location: , and Date of the Event: . If no artist is entered, the API automatically searches "Backstreet Boys" band information for the user.
 
 ![](images/Concert-this1.PNG)
+
 ![](images/Concert-this2.PNG}
 
 4. node liri.js do-what-it-says
