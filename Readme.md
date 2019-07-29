@@ -9,7 +9,7 @@ Using .gitignore, API keys are stored locally and kept safe through abstraction 
 
 All the data input by user is logged into the logs.txt file using fs.appendFile using the logThis() function.
 
-![][/images/image1.JPG)
+![][./images/Image1.JPG)
 
 ### Built With/Installations Required
 
@@ -35,7 +35,8 @@ All the data input by user is logged into the logs.txt file using fs.appendFile 
 
 1. node liri.js movie-this <movie name>
 
-*  This command searches the movie database in OMDB API through Axios and returns information about the movie.It includes 
+*  This command searches the movie database in OMDB API through Axios and returns information about the movie.
+   It includes 
 
 * Title of the movie
 * Year the movie released
@@ -45,5 +46,5 @@ All the data input by user is logged into the logs.txt file using fs.appendFile 
 * Plot of the movie
 * Actors in the movie
 
-![](/images/movie-this1.PNG)
-![](/images/movie-this2.PNG)
+![](images/Movie-this1.PNG)
+![](images/Movie-this2.PNG)
