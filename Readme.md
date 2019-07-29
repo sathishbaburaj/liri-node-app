@@ -9,18 +9,26 @@ Using .gitignore, API keys are stored locally and kept safe through abstraction 
 
 All the data input by user is logged into the logs.txt file using fs.appendFile using the logThis() function.
 
-![](images/image1.jpg)
+![][images/image1.JPG)
 
 ### Built With/Installations Required
 
 *[Node.js] (https://nodejs.org/en/)
+
 *[Node-File-System] (https://nodejs.org/api/fs.html)
+
 *[Axios] (https://www.npmjs.com/package/axios)
+
 *[DotEnv] (https://www.npmjs.com/package/dotenv)
+
 *[JavaScript] (https://www.javascript.com/)
+
 *[Moment.js] (https://www.npmjs.com/package/moment)
+
 *[OMDB-API] (http://www.omdbapi.com)
+
 *[Bandsintown-API] (http://www.artists.bandsintown.com/bandsintown-api)
+
 *[Node-Spotify-API] (https://www.npmjs.com/package/node-spotify-api)
 
 ### Command to run the App
@@ -37,5 +45,5 @@ All the data input by user is logged into the logs.txt file using fs.appendFile 
 * Plot of the movie
 * Actors in the movie
 
-![](images/movie-this1.png)
-![](images/movie-this2.png)
+![](images/movie-this1.PNG)
+![](images/movie-this2.PNG)
