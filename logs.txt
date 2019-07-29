@@ -1,1 +1,10 @@
-Song's Name :I Want It That WayArtist(s) Name: Backstreet BoysAlbum : The Hits--Chapter OnePreview Link : https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6?cid=96cc314ab07744b5a77990ac5b332371
+Please enter a valid search term for e.g to find the song information from Spotify 
+use the command  > node liri.js spotify-this-song song-name ----- song name will be the user input for the song
+# for finding movie information from the OMDB use the command
+> node movie-this movie-Name ---------- user has to input the movie name
+# for finding a concert in the town using the Bandsintown api use the command
+> node liri.js concert-this artist-name ---------- user has to input the artist name
+# do what ever it says--------- uses the information in the random.txt file....in this case it will extract the information from spotify api for a song "I want it that way"
+> node liri.js do-what-it-says
+Song's Name :I Want It That WayArtist(s) Name: Backstreet BoysAlbum : The Hits--Chapter One
+Preview Link : https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6?cid=96cc314ab07744b5a77990ac5b332371Title of the Movie: JumanjiRealeased Year: 1995Country where the movie was produced: USAIMDB Rating: 7.0Language of the Movie: English, FrenchPlot of the Movie: When two kids find and play a magical board game, they release a man trapped for decades in it and a host of dangers that can only be stopped by finishing the game.Actors in the Movie: Robin Williams, Jonathan Hyde, Kirsten Dunst, Bradley PierceTitle of the Movie: undefinedCountry where the movie was produced: undefinedIMDB Rating: undefinedLanguage of the Movie: undefinedRealeased Year: undefinedPlot of the Movie: undefinedActors in the Movie: undefinedTitle of the Movie: Top GunRealeased Year: 1986IMDB Rating: 6.9Country where the movie was produced: USALanguage of the Movie: EnglishPlot of the Movie: As students at the United States Navy's elite fighter weapons school compete to be best in the class, one daring young pilot learns a few things from a civilian instructor that are not taught in the classroom.Actors in the Movie: Tom Cruise, Kelly McGillis, Val Kilmer, Anthony Edwards
