@@ -9,7 +9,7 @@ Using .gitignore, API keys are stored locally and kept safe through abstraction 
 
 All the data input by user is logged into the logs.txt file using fs.appendFile using the logThis() function.
 
-![][images/image1.JPG)
+![][/images/image1.JPG)
 
 ### Built With/Installations Required
 
@@ -45,5 +45,5 @@ All the data input by user is logged into the logs.txt file using fs.appendFile 
 * Plot of the movie
 * Actors in the movie
 
-![](images/movie-this1.PNG)
-![](images/movie-this2.PNG)
+![](/images/movie-this1.PNG)
+![](/images/movie-this2.PNG)
