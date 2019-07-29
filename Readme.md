@@ -73,7 +73,7 @@ All the data input by user is logged into the logs.txt file using fs.appendFile 
 
 ![](images/Concert-this1.PNG)
 
-![](images/Concert-this2.PNG}
+![](images/Concert-this2.PNG)
 
 4. node liri.js do-what-it-says
 
