@@ -13,23 +13,23 @@ All the data input by user is logged into the logs.txt file using fs.appendFile 
 
 ### Built With/Installations Required
 
-*[Node.js] (https://nodejs.org/en/)
+* [Node.js] (https://nodejs.org/en/)
 
-*[Node-File-System] (https://nodejs.org/api/fs.html)
+* [Node-File-System] (https://nodejs.org/api/fs.html)
 
-*[Axios] (https://www.npmjs.com/package/axios)
+* [Axios] (https://www.npmjs.com/package/axios)
 
-*[DotEnv] (https://www.npmjs.com/package/dotenv)
+* [DotEnv] (https://www.npmjs.com/package/dotenv)
 
-*[JavaScript] (https://www.javascript.com/)
+* [JavaScript] (https://www.javascript.com/)
 
-*[Moment.js] (https://www.npmjs.com/package/moment)
+* [Moment.js] (https://www.npmjs.com/package/moment)
 
-*[OMDB-API] (http://www.omdbapi.com)
+* [OMDB-API] (http://www.omdbapi.com)
 
-*[Bandsintown-API] (http://www.artists.bandsintown.com/bandsintown-api)
+* [Bandsintown-API] (http://www.artists.bandsintown.com/bandsintown-api)
 
-*[Node-Spotify-API] (https://www.npmjs.com/package/node-spotify-api)
+* [Node-Spotify-API] (https://www.npmjs.com/package/node-spotify-api)
 
 ### Command to run the App
 
@@ -55,14 +55,14 @@ All the data input by user is logged into the logs.txt file using fs.appendFile 
  This command searches the Spotify Web Api which runs on Node.js and returns the song information.
  The output from this command includes
  
- *Artists(s) Name
- *Song's Name
- *Preview link of the song
- *Album
+ * Artists(s) Name 
+ * Song's Name 
+ * Preview link of the song 
+ * Album
  
  ![](images/Spotify-this1.PNG)
  
- *If the user doesn't provide any song name then the application returns the default information which is set to "The Sign" by "Ace of Base".
+ * If the user doesn't provide any song name then the application returns the default information which is set to "The Sign" by "Ace of Base".
  
   ![](images/Spotify-this2.PNG)
   
@@ -77,7 +77,7 @@ All the data input by user is logged into the logs.txt file using fs.appendFile 
 
 4. node liri.js do-what-it-says
 
-*Using the fs Node package, LIRI accesses the text in random.txt and uses it to call one of LIRI's commands for the user.
+* Using the fs Node package, LIRI accesses the text in random.txt and uses it to call one of LIRI's commands for the user.
  It runs spotify-this-song for "I Want it That Way" by the Backstreet Boys, but can also be modified to search for a specific movie for movie-this,
  or a specific artist for concert-this etc.
  
@@ -85,7 +85,7 @@ All the data input by user is logged into the logs.txt file using fs.appendFile 
  
 5. node liri.js
  
-*If no other user input is provided by the user, the terminal returns the message Please enter a valid search term, 
+* If no other user input is provided by the user, the terminal returns the message Please enter a valid search term, 
  such as {concert-this}, {spotify-this-song}, {movie-this}, or {do-what-it-says}".
  
  ![](images/default.PNG)
