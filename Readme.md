@@ -35,7 +35,7 @@ All the data input by user is logged into the logs.txt file using fs.appendFile 
 
 1. node liri.js movie-this <movie name>
 
- *This command searches the movie database in OMDB API through Axios and returns information about the movie.
+ * This command searches the movie database in OMDB API through Axios and returns information about the movie.
    It includes 
 
 * Title of the movie
