@@ -69,7 +69,7 @@ All the data input by user is logged into the logs.txt file using fs.appendFile 
 3.node liri.js concert-this <artist/band-name>
 
 *This command searches the Bands in Town Artist Events API through Axios and returns events the artist is appearing at in the near future.
- It includes Venue Name: , Venue Location: , and Date of the Event: . If no artist is entered, the API automatically searches "Backstreet Boys" band information for the user.
+ It includes Venue Name: , Venue Location: , and Date of the Event: . If no artist name is entered, the API automatically searches "Backstreet Boys" band information for the user.
 
 ![](images/Concert-this1.PNG)
 
