@@ -38,8 +38,10 @@ switch (userInput) {
     break;
   }
   default:
-      console.log("Please enter a valid search term, e.g movie-this,concert-this,spotify-this-song or do-what-it-says");
-      break;
+    console.log(
+      "Please enter a valid search term, e.g movie-this,concert-this,spotify-this-song or do-what-it-says"
+    );
+    break;
 }
 function movieThis() {
   if (!userQuery) {
@@ -54,19 +56,20 @@ function movieThis() {
 
   axios.get(queryUrl).then(
     function(response, error) {
-        var movieObj = {"Title of the Movie: ": response.data.Title,
-                        "Realeased Year: " :response.data.Year,
-                        "IMDB Rating: " :response.data.imdbRating,
-                        "Country where the movie was produced: " : response.data.Country,
-                        "Language of the Movie: " :response.data.Language,
-                        "Plot of the Movie: " :response.data.Plot,
-                        "Actors in the Movie: " :response.data.Actors}
+      var movieObj = {
+        "Title of the Movie: ": response.data.Title,
+        "Realeased Year: ": response.data.Year,
+        "IMDB Rating: ": response.data.imdbRating,
+        "Country where the movie was produced: ": response.data.Country,
+        "Language of the Movie: ": response.data.Language,
+        "Plot of the Movie: ": response.data.Plot,
+        "Actors in the Movie: ": response.data.Actors
+      };
 
-    Array.from(Object.keys(movieObj)).forEach(function(key){
-        console.log(key  + movieObj[key]);
-        logThis(key  + movieObj[key]);
+      Array.from(Object.keys(movieObj)).forEach(function(key) {
+        console.log(key + movieObj[key]);
+        logThis(key + movieObj[key]);
       });
-          
     },
     function(error) {
       console.log(error);
@@ -83,24 +86,27 @@ function spotifyThis() {
     .search({ type: "track", query: userQuery })
     .then(function(response, error) {
       var userSong = response.tracks.items;
-      var songObj = {"Artist(s) Name: "  : userSong[0].artists[0].name,
-                        "Song's Name :"  : userSong[0].name,
-                        "Preview Link : ": userSong[0].preview_url ,
-                        "Album : "       : userSong[0].album.name
-                    }
-   
-      Array.from(Object.keys(songObj)).forEach(function(key){
-        console.log(key  + songObj[key]);
-        logThis(key  + songObj[key]);
-      });
+      
+      for (var i = 0; i < userSong.length; i++) {
+        var songObj= userSong[i].album;
+        console.log("Artist(s) Name: "  + songObj.name);
+        console.log("Song's Name :" + userSong[i].name);
+        console.log("Preview Link : " + userSong[i].preview_url);
+        console.log("Album : " + userSong[i].album.name);
+        console.log("----------------------------------------------------------------------------------");
 
+        logThis("Song's Name :" + userSong[i].name);
+        logThis("Preview Link : " + userSong[i].preview_url);
+        logThis("Album : " + userSong[i].album.name);
+        
+      }
     })
     .catch(function(error) {
       console.log(error);
     });
 }
 function concertThis() {
-    if (!userQuery) {
+  if (!userQuery) {
     userQuery = "backstreet " + "boys";
   }
   // Then run a request with axios to the OMDB API with the movie specified
@@ -111,31 +117,29 @@ function concertThis() {
     keys.bands.id;
 
   axios.get(queryUrl).then(
-    function(response, error) {     
-        for(var i=0;i<response.data.length;i++){
+    function(response, error) {
+      for (var i = 0; i < response.data.length; i++) {
+        var concertObj = {
+          "Venue name: ": response.data[i].venue.name,
+          "Venue Location: ": response.data[i].venue.city,
+          "Venue Country: ": response.data[i].venue.country,
+          "Date of the Event: ": moment(response.data[i].datetime).format("L"),
+          "------------------": "-------------------------------------------"
+        };
 
-        var concertObj = {"Venue name: " :response.data[i].venue.name,
-                          "Venue Location: " :response.data[i].venue.city,
-                          "Venue Country: "  :response.data[i].venue.country,
-                          "Date of the Event: ":moment(response.data[i].datetime).format("L"),
-                          "------------------":"-------------------------------------------"
-                        }
+        Array.from(Object.keys(concertObj)).forEach(function(key) {
+          console.log(key + concertObj[key]);
+          logThis(key + concertObj[key]);
+        });
+      }
+    },
 
-        Array.from(Object.keys(concertObj)).forEach(function(key){
-            console.log(key  + concertObj[key]);
-            logThis(key  + concertObj[key]);       
-        }       
-  );
+    function(error) {
+      console.log(error);
     }
-},
-
-function(error) {
-    console.log(error);
-  }
   );
 }
 
-  
 function doWhatItSays() {
   // This block of code will read from the "movies.txt" file.
   // It's important to include the "utf8" parameter or the code will provide stream data (garbage)
@@ -153,18 +157,16 @@ function doWhatItSays() {
     spotifyThis(userQuery);
   });
 }
-function logThis(logquery){
-// This block of code will create a file called "logs.txt".
-// It will then print "Inception, Die Hard" in the file
-fs.appendFile("logs.txt", logquery, function(err) {
-
+function logThis(logquery) {
+  // This block of code will create a file called "logs.txt".
+  // It will then print "Inception, Die Hard" in the file
+  fs.appendFile("logs.txt", logquery, function(err) {
     // If the code experiences any errors it will log the error to the console.
     if (err) {
       return console.log(err);
     }
-  
+
     // Otherwise, it will print: "logs.txt was updated!"
     // console.log("logs.txt was updated!");
-  
   });
 }
