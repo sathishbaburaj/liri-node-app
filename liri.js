@@ -1,5 +1,6 @@
 // Grab the axios package...
 var axios = require("axios");
+var inquirer =require("inquirer");
 // Core node package for reading and writing files
 var fs = require("fs");
 require("dotenv").config();
@@ -7,53 +8,63 @@ var keys = require("./keys");
 var Spotify = require("node-spotify-api");
 var spotify = new Spotify(keys.spotify);
 var moment = require("moment");
-
-var userInput = process.argv[2];
-
 var userQuery = "";
-
-for (var i = 3; i < process.argv.length; i++) {
-  if (i > 3 && i < process.argv.length) {
-    userQuery += "+" + process.argv[i];
-  } else {
-    userQuery += process.argv[i];
-  }
+function runSearch() {
+  inquirer
+    .prompt({
+      name: "action",
+      type: "list",
+      message: "What would you like to do?",
+      choices: [
+        "movie-this",
+        "spotify-this-song",
+        "concert-this",
+        "do-what-it-says",
+        "Exit"
+              ]
+    })
+    .then(function(answer) {
+      switch (answer.action) {
+        case "movie-this": {
+          movieThis();
+          break;
+        }
+        case "spotify-this-song": {
+          spotifyThis();
+          break;
+        }
+        case "concert-this": {
+          concertThis();
+          break;
+        }
+        case "do-what-it-says": {
+          doWhatItSays();
+          break;
+        }
+        case "Exit":{
+          console.log("Exiting the application");
+          break;
+        }
+      }
+    });
 }
-
-switch (userInput) {
-  case "movie-this": {
-    movieThis();
-    break;
-  }
-  case "spotify-this-song": {
-    spotifyThis();
-    break;
-  }
-  case "concert-this": {
-    concertThis();
-    break;
-  }
-  case "do-what-it-says": {
-    doWhatItSays();
-    break;
-  }
-  default:
-    console.log(
-      "Please enter a valid search term, e.g movie-this,concert-this,spotify-this-song or do-what-it-says"
-    );
-    break;
-}
+runSearch();
 function movieThis() {
-  if (!userQuery) {
-    userQuery = "Mr." + "Nobody";
-  }
-  // Then run a request with axios to the OMDB API with the movie specified
-  var queryUrl =
+  
+  inquirer
+    .prompt({
+      name: "movie",
+      type: "input",
+      message: "What movie would you like to search for?",
+      default : "Mr."+" Nobody",
+    })
+    .then(function(answer) {
+      var queryUrl =
     "http://www.omdbapi.com/?t=" +
-    userQuery +
+    answer.movie +
     "&y=&plot=short&apikey=" +
     keys.movies.id;
-
+ // Then run a request with axios to the OMDB API with the movie specified
   axios.get(queryUrl).then(
     function(response, error) {
       var movieObj = {
@@ -75,44 +86,57 @@ function movieThis() {
       console.log(error);
     }
   );
+       
+    });
+    
+
+ 
+  
 }
 
-function spotifyThis() {
-  var songName;
-  if (!userQuery) {
-    userQuery = "The" + " Sign" + " Ace" + " of" + " base";
-  }
-  spotify
-    .search({ type: "track", query: userQuery })
-    .then(function(response, error) {
-      var userSong = response.tracks.items;
-      
-      for (var i = 0; i < userSong.length; i++) {
-        var songObj= userSong[i].album;
-        console.log("Artist(s) Name: "  + songObj.name);
-        console.log("Song's Name :" + userSong[i].name);
-        console.log("Preview Link : " + userSong[i].preview_url);
-        console.log("Album : " + userSong[i].album.name);
-        console.log("----------------------------------------------------------------------------------");
 
-        logThis("Song's Name :" + userSong[i].name);
-        logThis("Preview Link : " + userSong[i].preview_url);
-        logThis("Album : " + userSong[i].album.name);
-        
-      }
+function spotifyThis() {
+  if(!userQuery){
+  inquirer
+    .prompt({
+      name: "song",
+      type: "input",
+      message: "What song would you like to search for?",
+      default : "The"+" Sign"+" Ace"+" of"+" base",
     })
+
+    .then(function(answer) {
+      userQuery = answer.song;
+      spotifySearch();
+  
+    })
+    
     .catch(function(error) {
       console.log(error);
     });
+  
+  
+  // spotifySearch();
+  
 }
+}
+
+
+
 function concertThis() {
-  if (!userQuery) {
-    userQuery = "backstreet " + "boys";
-  }
+  inquirer
+    .prompt({
+      name: "band",
+      type: "input",
+      message: "What band would you like to search for?",
+      default : "backstreet "+"boys",
+    })
+  
   // Then run a request with axios to the OMDB API with the movie specified
-  var queryUrl =
+  .then(function(answer) {
+    var queryUrl =
     "https://rest.bandsintown.com/artists/" +
-    userQuery +
+    answer.band +
     "/events?app_id=" +
     keys.bands.id;
 
@@ -138,6 +162,8 @@ function concertThis() {
       console.log(error);
     }
   );
+});
+
 }
 
 function doWhatItSays() {
@@ -153,10 +179,13 @@ function doWhatItSays() {
     // Then split it by commas
     var dataArr = data.split(",");
     userQuery = dataArr[1];
-    // We will then use spotifyThis() to get the data for the Song from random.txt file
-    spotifyThis(userQuery);
+    console.log(userQuery);
+    // We will then use spotifySearch() to get the data for the Song from random.txt file
+    spotifySearch();
   });
 }
+
+
 function logThis(logquery) {
   // This block of code will create a file called "logs.txt".
   // It will then print "Inception, Die Hard" in the file
@@ -170,3 +199,24 @@ function logThis(logquery) {
     // console.log("logs.txt was updated!");
   });
 }
+function spotifySearch(){
+spotify
+    .search({ type: "track", query: userQuery })
+    .then(function(response, error) {
+      var userSong = response.tracks.items;
+      
+      for (var i = 0; i < userSong.length; i++) {
+        var songObj= userSong[i].album;
+        console.log("Artist(s) Name: "  + songObj.name);
+        console.log("Song's Name :" + userSong[i].name);
+        console.log("Preview Link : " + userSong[i].preview_url);
+        console.log("Album : " + userSong[i].album.name);
+        console.log("----------------------------------------------------------------------------------");
+
+        logThis("Song's Name :" + userSong[i].name);
+        logThis("Preview Link : " + userSong[i].preview_url);
+        logThis("Album : " + userSong[i].album.name);
+        
+      }
+    });
+  }
